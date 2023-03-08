@@ -1,0 +1,7 @@
+{
+    "@@locale": "en",
+    "homeAppBarTitle": "Theme Switcher",
+    "@homeAppBarTitle": {
+        "description": ""
+    }
+}
