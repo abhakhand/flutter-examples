@@ -1,0 +1,103 @@
+import 'package:flutter/material.dart';
+import 'package:theme_switcher/src/core/presentation/theme/colors.dart';
+import 'package:theme_switcher/src/core/presentation/theme/typography.dart';
+
+class AppThemes {
+  const AppThemes._();
+
+  /// Light Theme
+  static final lightTheme = ThemeData(
+    fontFamily: AppTypography.fontFamily,
+    brightness: Brightness.light,
+    primaryColor: AppColors.primaryColor,
+    textTheme: const TextTheme(
+      bodySmall: AppTypography.bodySmall,
+      bodyMedium: AppTypography.bodyMedium,
+      bodyLarge: AppTypography.bodyLarge,
+    ),
+  );
+
+  /// Dark Theme
+  static final darkTheme = ThemeData(
+    fontFamily: AppTypography.fontFamily,
+    brightness: Brightness.dark,
+    primaryColor: AppColors.primaryColor,
+    textTheme: TextTheme(
+      bodySmall: AppTypography.bodySmall
+          .copyWith(color: AppColors.darkThemePrimaryFontColor),
+      bodyMedium: AppTypography.bodyMedium
+          .copyWith(color: AppColors.darkThemePrimaryFontColor),
+      bodyLarge: AppTypography.bodyLarge
+          .copyWith(color: AppColors.darkThemePrimaryFontColor),
+    ),
+  );
+}
+
+extension ThemeDataX on ThemeData {
+  /// Is current theme mode dark
+  bool get isDark => brightness == Brightness.dark;
+
+  //* Font Colors
+  /// Primary font color based on theme mode
+  Color get primaryFontColor => isDark
+      ? AppColors.darkThemePrimaryFontColor
+      : AppColors.lightThemePrimaryFontColor;
+
+  /// Secondary font color based on theme mode
+  Color get secondaryFontColor => isDark
+      ? AppColors.darkThemeSecondaryFontColor
+      : AppColors.lightThemeSecondaryFontColor;
+
+  /// Tertiary font color based on theme mode
+  Color get tertiaryFontColor => isDark
+      ? AppColors.darkThemeTertiaryFontColor
+      : AppColors.lightThemeTertiaryFontColor;
+
+  //* Title text styles
+  TextStyle get titleSmallPrimary =>
+      AppTypography.titleSmall.copyWith(color: primaryFontColor);
+
+  TextStyle get titleMediumPrimary =>
+      AppTypography.titleMedium.copyWith(color: primaryFontColor);
+
+  TextStyle get titleLargePrimary =>
+      AppTypography.titleLarge.copyWith(color: primaryFontColor);
+
+  //* Body text styles
+  TextStyle get bodySmallPrimary =>
+      AppTypography.bodySmall.copyWith(color: primaryFontColor);
+
+  TextStyle get bodySmallSecondary =>
+      AppTypography.bodySmall.copyWith(color: secondaryFontColor);
+
+  TextStyle get bodySmallTertiary =>
+      AppTypography.bodySmall.copyWith(color: tertiaryFontColor);
+
+  TextStyle get bodyMediumPrimary =>
+      AppTypography.bodyMedium.copyWith(color: primaryFontColor);
+
+  TextStyle get bodyMediumSecondary =>
+      AppTypography.bodyMedium.copyWith(color: secondaryFontColor);
+
+  TextStyle get bodyMediumTertiary =>
+      AppTypography.bodyMedium.copyWith(color: tertiaryFontColor);
+
+  TextStyle get bodyLargePrimary =>
+      AppTypography.bodyLarge.copyWith(color: primaryFontColor);
+
+  TextStyle get bodyLargeSecondary =>
+      AppTypography.bodyLarge.copyWith(color: secondaryFontColor);
+
+  TextStyle get bodyLargeTertiary =>
+      AppTypography.bodyLarge.copyWith(color: tertiaryFontColor);
+
+  //* Caption text styles
+  TextStyle get captionPrimary =>
+      AppTypography.caption.copyWith(color: primaryFontColor);
+
+  TextStyle get captionSecondary =>
+      AppTypography.caption.copyWith(color: secondaryFontColor);
+
+  TextStyle get captionTertiary =>
+      AppTypography.caption.copyWith(color: tertiaryFontColor);
+}
